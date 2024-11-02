@@ -8,7 +8,7 @@ This repository contains a Python script that converts the text from a PDF file 
 - [Usage](#usage)
 - [Explanation](#explanation)
 - [Contributing](#contributing)
-  
+
 
 ## Installation
 
@@ -41,48 +41,20 @@ This repository contains a Python script that converts the text from a PDF file 
 ## Explanation
 
 ### Code Overview
-```python
-from gtts import gTTS
-from PyPDF2 import PdfReader
-import os
 
-# Load the PDF file
-f = open('text1.pdf', 'rb')
-pdf = PdfReader(f)
-text = ''
+The script includes the following key components:
+- **Loading the PDF**: Uses `PdfReader` from PyPDF2 to load and read the PDF file.
+- **Text Extraction**: Iterates over each page of the PDF to extract the text.
+- **Text-to-Speech Conversion**: Uses `gTTS` to convert the extracted text to speech.
+- **Audio Playback**: Saves the speech as an audio file and plays it using `os.system`.
 
-# Extract text from each page
-for pages in pdf.pages:
-    text += pages.extract_text()
+## Contributing
 
-# Specify the language for the TTS
-language = 'en'
-
-# Convert the extracted text to speech
-audio = gTTS(text=text, lang=language, slow=False)
-audio.save('audio.wav')
-
-# Play the audio file
-os.system('audio.wav')
-
-Key Components
-Loading the PDF: Uses PdfReader from PyPDF2 to load and read the PDF file.
-
-Text Extraction: Iterates over each page of the PDF to extract the text.
-
-Text-to-Speech Conversion: Uses gTTS to convert the extracted text to speech.
-
-Audio Playback: Saves the speech as an audio file and plays it using os.system.
-
-Contributing
 Contributions are welcome! Please follow these steps to contribute:
 
-Fork the repository.
+1. Fork the repository.
+2. Create your feature branch: `git checkout -b feature/YourFeature`.
+3. Commit your changes: `git commit -m 'Add YourFeature'`.
+4. Push to the branch: `git push origin feature/YourFeature`.
+5. Open a pull request.
 
-Create your feature branch: git checkout -b feature/YourFeature.
-
-Commit your changes: git commit -m 'Add YourFeature'.
-
-Push to the branch: git push origin feature/YourFeature.
-
-Open a pull request.
